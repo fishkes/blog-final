@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Posts from "./views/posts/Posts.vue";
+import Albums from "./views/albums/Albums.vue";
 
 Vue.use(Router);
 
@@ -10,17 +11,28 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "posts",
+      component: Posts
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      path: "/posts/:id",
+      name: "post",
+      props: true,
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "post" */ "./views/posts/Post.vue")
+    },
+    {
+      path: "/albums",
+      name: "albums",
+      component: () =>
+        import(/* webpackChunkName: "albums" */ "./views/albums/Albums.vue")
+    },
+    {
+      path: "/albums/:id",
+      name: "album",
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "album" */ "./views/albums/Album.vue")
     }
   ]
 });
