@@ -1,9 +1,10 @@
 <template>
-  <app-page>
+  <app-page :title="title">
     <form @submit.prevent="submit" class="needs-validation" novalidate>
       <div class="form-group">
         <label>Title</label>
         <input
+          data-test="post-title"
           type="text"
           class="form-control"
           placeholder="Post title"
@@ -14,6 +15,7 @@
       <div class="form-group">
         <label>Body</label>
         <textarea
+          data-test="post-body"
           class="form-control"
           placeholder="Post body"
           v-model="post.body"
@@ -22,7 +24,7 @@
         <div class="text-danger" v-show="error.body">body is required.</div>
       </div>
       <div class="d-flex">
-        <button type="submit" class="btn btn-primary mr-2">
+        <button type="submit" class="btn btn-primary mr-2" data-test="save-btn">
           {{ isEdit ? "Update" : "Save" }}
         </button>
         <button
@@ -30,6 +32,7 @@
           class="btn btn-danger"
           type="button"
           @click="deletePost"
+          data-test="delete-btn"
         >
           Delete
         </button>
@@ -72,6 +75,9 @@ export default {
     },
     isEdit() {
       return this.id && this.id !== "new";
+    },
+    title() {
+      return this.isEdit ? "Update Post" : "Create Post";
     }
   },
   data() {

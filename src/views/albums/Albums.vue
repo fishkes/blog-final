@@ -1,5 +1,5 @@
 <template>
-  <app-page>
+  <app-page title="Albums">
     <div class="card mb-2">
       <div class="card-body d-flex justify-content-between align-items-center">
         <router-link

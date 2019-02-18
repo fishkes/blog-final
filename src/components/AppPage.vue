@@ -1,6 +1,7 @@
 <template>
   <div class="row page py-4">
     <div class="col">
+      <h2 class="page-title">{{ title }}</h2>
       <slot />
     </div>
   </div>
@@ -8,7 +9,13 @@
 
 <script>
 export default {
-  name: "AppPage"
+  name: "AppPage",
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  }
 };
 </script>
 

@@ -1,14 +1,16 @@
 <template>
-  <app-page>
+  <app-page title="Posts">
     <div class="card mb-2">
       <div class="card-body d-flex justify-content-between align-items-center">
         <router-link
+          data-test="add-post"
           class="btn btn-primary"
           :to="{ name: 'post', params: { id: 'new' } }"
           >Add Post</router-link
         >
         <div class="form-group mb-0">
           <input
+            data-test="list-filter"
             type="search"
             class="form-control"
             v-model="filter"
@@ -21,6 +23,7 @@
     <app-list :items="filteredPosts" @click="openPost">
       <template slot-scope="{ item: post }">
         <div
+          data-test="list-item"
           class="author mr-3 d-flex justify-content-center align-items-center flex-column"
         >
           <div class="badge badge-warning py-4">{{ user.name }}</div>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-spinner v-show="loading"></app-spinner>
-    <notifications group="message" />
+    <notifications group="message" data-test="notification" />
     <app-nav></app-nav>
 
     <div class="container" style="margin-top:4em">
